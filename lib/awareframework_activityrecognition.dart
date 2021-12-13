@@ -1,5 +1,5 @@
 import 'dart:async';
-
+import 'dart:core';
 import 'package:flutter/services.dart';
 import 'package:awareframework_core/awareframework_core.dart';
 
@@ -43,10 +43,11 @@ class ActivityRecognitionSensor extends AwareSensorCore {
         .map((dynamic event) =>
             ActivityRecognitionData.from(Map<String, dynamic>.from(event)))
         .listen((event) {
-      data = event;
-      if (!streamController.isClosed) {
-        streamController.add(data);
-      }
+          data = event;
+
+          if (!streamController.isClosed) {
+            streamController.add(data);
+          }
     });
     return super.start();
   }
@@ -60,26 +61,27 @@ class ActivityRecognitionSensor extends AwareSensorCore {
 
 class ActivityRecognitionSensorConfig extends AwareSensorConfig {
   ActivityRecognitionSensorConfig();
-
-  /// TODO
-
   @override
   Map<String, dynamic> toMap() {
     var map = super.toMap();
-
-    // TODO
-
     return map;
   }
 }
 
 class ActivityRecognitionData extends AwareData {
-  // TODO
+  int? detectedActivity;
+  int? activityTransiton;
+  int timestamp = 0;
+  int timezone = 0;
 
   ActivityRecognitionData() : this.from({});
   ActivityRecognitionData.from(Map<String, dynamic>? data) : super(data ?? {}) {
     if (data != null) {
-      // TODO
+      detectedActivity = data["detectedActivity"];
+      activityTransiton = data["activityTransiton"];
+      timestamp = data["timeStamp"] ?? 0;
+      timezone = data["timeZone"] ?? 0;
+
     }
   }
 }

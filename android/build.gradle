@@ -43,5 +43,6 @@ dependencies {
 //    implementation 'com.github.awareframework:com.awareframework.android.sensor.activityrecognition:master-SNAPSHOT'
     implementation 'com.google.code.gson:gson:2.8.8'
 
+    api 'com.github.awareframework:com.awareframework.android.core:master-SNAPSHOT'
     implementation 'com.github.KarasawaTakumi0621:com.awareframework.android.sensor.transition_activityrecognition:v0.2'
 }
