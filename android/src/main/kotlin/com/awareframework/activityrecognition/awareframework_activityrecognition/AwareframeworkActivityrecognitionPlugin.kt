@@ -133,8 +133,8 @@ open class AwareFlutterPluginCore: StreamHandler, MethodCallHandler {
 
     open fun start(call: MethodCall, result: Result) {
       println("open fun start")
-      println(call)
-      println(result)
+//      println(call)
+//      println(result)
 
       this.binding?.applicationContext?.let { appContext ->
         val config = ActivityRecognitionSensor.Config()
@@ -143,10 +143,16 @@ open class AwareFlutterPluginCore: StreamHandler, MethodCallHandler {
           val debug = args["debug"]
           val deviceId = args["deviceId"]
           val dbHost = args["dbHost"]
+          val label = args["label"]
 
           if (debug is Boolean) config.debug = debug
           if (deviceId is String) config.deviceId = deviceId
           if (dbHost is String) config.dbHost = dbHost
+          if (label is String) config.label = label
+
+          println("ababa")
+          println(deviceId)
+          println(label)
         }
 
 

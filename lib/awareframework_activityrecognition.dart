@@ -10,18 +10,20 @@ class ActivityRecognitionSensor extends AwareSensorCore {
   static const EventChannel _onDataChangedStream = const EventChannel(
       'awareframework_activityrecognition/event_on_data_changed');
 
-  /// Init ActivityRecognition Sensor with ActivityRecognitionSensorConfig
-  ActivityRecognitionSensor(ActivityRecognitionSensorConfig config)
-      : this.convenience(config);
-  ActivityRecognitionSensor.convenience(config) : super(config) {
-    /// Set sensor method & event channels
-    super.setMethodChannel(_activityrecognitionMethod);
-  }
+  // /// Init ActivityRecognition Sensor with ActivityRecognitionSensorConfig
+  // ActivityRecognitionSensor(ActivityRecognitionSensorConfig config)
+  //     : this.convenience(config);
+  // ActivityRecognitionSensor.convenience(config) : super(config) {
+  //   /// Set sensor method & event channels
+  //   super.setMethodChannel(_activityrecognitionMethod);
+  // }
 
   static ActivityRecognitionData data = ActivityRecognitionData();
 
   static StreamController<ActivityRecognitionData> streamController =
       StreamController<ActivityRecognitionData>();
+
+  ActivityRecognitionSensor() : super(null);
 
   ActivityRecognitionSensor.init(ActivityRecognitionSensorConfig config)
       : super(config) {
@@ -69,19 +71,18 @@ class ActivityRecognitionSensorConfig extends AwareSensorConfig {
 }
 
 class ActivityRecognitionData extends AwareData {
+  ActivityRecognitionData() : this.from({});
   int? detectedActivity;
   int? activityTransiton;
   int timestamp = 0;
   int timezone = 0;
 
-  ActivityRecognitionData() : this.from({});
   ActivityRecognitionData.from(Map<String, dynamic>? data) : super(data ?? {}) {
     if (data != null) {
       detectedActivity = data["detectedActivity"];
       activityTransiton = data["activityTransiton"];
       timestamp = data["timeStamp"] ?? 0;
       timezone = data["timeZone"] ?? 0;
-
     }
   }
 }

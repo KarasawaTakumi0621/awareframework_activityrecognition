@@ -22,6 +22,8 @@ class _MyAppState extends State<MyApp> {
     super.initState();
 
     var config = ActivityRecognitionSensorConfig();
+    config.deviceId = "flutter_tk_deviceid_test";
+    config.label = "flutter_tk_label_test";
     // config.usageAppDisplaynames = ["com.twitter.android", "com.facebook.orca", "com.facebook.katana", "com.instagram.android", "jp.naver.line.android", "com.ss.android.ugc.trill"];
     // config.usageAppEventTypes = [1,2];
 
@@ -46,6 +48,9 @@ class _MyAppState extends State<MyApp> {
             Text("TimeZone: ${widget.data.timezone}"),
             Text("ActivityTransition: ${widget.data.activityTransiton}"),
             Text("DetectedActivity: ${widget.data.detectedActivity}"),
+            Text("DeciceId: ${widget.data.deviceId}"),
+            Text("label: ${widget.data.label}"),
+
 
             TextButton(
                 onPressed: () {
